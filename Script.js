@@ -1,5 +1,12 @@
+/*
+1. the win round messages need to be fixed
+2. Style it
+3. fix the noodles code
+*/
+
+
 const playerChoice = document.querySelector('#playerChoice');
-const compChoice = document.querySelector('#computerChoice');
+const compChoice = document.querySelector('#compChoice');
 const playerBoard = document.querySelector('#playerScore');
 const compBoard = document.querySelector('#compScore');
 const winStatus = document.querySelector('#winStatus');
@@ -17,8 +24,9 @@ buttons.forEach(button => button.addEventListener('click', () => {
     playGame(player, computer);
     playerBoard.textContent = playerScore;
     compBoard.textContent = compScore;
+    playerChoice.textContent = button.id;
+    compChoice.textContent = computer;
     winnerCheck();    
-
 }))
 
 
@@ -39,55 +47,46 @@ function getComputerChoice(){
 
 function playGame(player, comp){
     if (player == "ROCK" && comp == "SCISSORS"){
-        winStatus.textContent = "You Win || Rock beat Scissors";
+        //winStatus.textContent = "You Win || Rock beat Scissors";
         playerScore ++;
     }
     else if(player == "PAPER" && comp == "ROCK"){
-        winStatus.textContent = "You Win || Paper beat Rock";
+        //winStatus.textContent = "You Win || Paper beat Rock";
         playerScore ++;
-
     }
     else if(player == "SCISSORS" && comp == "PAPER"){
-        winStatus.textContent = "You Win || Scissors beat Paper";
+        //winStatus.textContent = "You Win || Scissors beat Paper";
         playerScore ++;
     }
     else if(player == "ROCK" && comp == "PAPER"){
-        winStatus.textContent = "You Lose || Paper beat Rock";
-        compScore ++;
+        //winStatus.textContent = "You Lose || Paper beat Rock";
+        compScore ++;  
     }
     else if(player == "PAPER" && comp == "SCISSORS"){
-        winStatus.textContent = "You Lose || Scissors beat Paper";
+        //winStatus.textContent = "You Lose || Scissors beat Paper";
         compScore ++;
     }
-    else{
-        winStatus.textContent = "You Lose || Rock Beat Scissors";
+    else if(player == "SCISSORS" && comp == "ROCK"){
+        //winStatus.textContent = "You Lose || Rock Beat Scissors";
         compScore ++;
     }
 ;
-}   
-
-
-/*function Game(){
-    for (let i = 0; i < 5; i ++){
-        let Score = PlayGame();
-        if (Score.slice(4, 7) == "Win"){
-            playerScore ++;
-        }
-        else if(Score.slice(4, 8) == "Lose"){
-            compScore ++;
-        }
-        let Total = `Your Score: ${playerScore}, Computer Score: ${compScore}`;
-        console.log(Total);
-    }
-
-    let endGame = playerScore > compScore;
-    if(endGame == true){
-        console.log("You are The game Champion")
-    }
-    else{
-        console.log("L")
-    }
-    return endGame;
 }
-console.log(Game());
-*/
+
+function winnerCheck(){
+    if(playerScore >= 3){
+        winStatus.textContent = `YOU WIN!`;
+        stopGame();
+    }
+    else if(compScore >= 3){
+        winStatus.textContent = `YOU LOSE!`;
+        stopGame();   
+    }
+}
+
+function stopGame(){
+    document.querySelector(`#Rock`).disabled = true;
+    document.querySelector(`#Paper`).disabled = true;
+    document.querySelector(`#Scissors`).disabled = true;
+
+}
