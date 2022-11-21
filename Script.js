@@ -11,6 +11,9 @@ const playerBoard = document.querySelector('#playerScore');
 const compBoard = document.querySelector('#compScore');
 const winStatus = document.querySelector('#winStatus');
 
+const img1 = document.createElement("img");
+const img2 = document.createElement("img");
+
 
 let player;
 let Computer;
@@ -21,11 +24,10 @@ const buttons = document.querySelectorAll(`.choicesBtn`);
 buttons.forEach(button => button.addEventListener('click', () => {
     player = button.id.toUpperCase();
     computer = getComputerChoice();
+    showChoice(player);
     playGame(player, computer);
     playerBoard.textContent = playerScore;
     compBoard.textContent = compScore;
-    playerChoice.textContent = button.id;
-    compChoice.textContent = computer;
     winnerCheck();    
 }))
 
@@ -35,15 +37,42 @@ function getComputerChoice(){
     let choice;
     if(randomNumbers == 0){
         choice = "Scissors";
+        img2.classList.add("imgChoice");
+        img2.src = "/pic/scissorsHand.png";
+        compChoice.appendChild(img2);
     }
     else if(randomNumbers == 1){
         choice = "Paper";
+        img2.classList.add("imgChoice");
+        img2.src = "/pic/paperHand.png";
+        compChoice.appendChild(img2);
     }
     else{
         choice = "Rock";
+        img2.classList.add("imgChoice");
+        img2.src = "/pic/rockHand.png";
+        compChoice.appendChild(img2);
     }
     return choice.toUpperCase();
 } // this one Done
+
+function showChoice(A){
+    if(A == "ROCK"){
+        img1.classList.add("imgChoice");
+        img1.src = "/pic/rockHand.png";
+        playerChoice.appendChild(img1);
+    }
+    else if(A == "PAPER"){
+        img1.classList.add("imgChoice");
+        img1.src = "/pic/paperHand.png";
+        playerChoice.appendChild(img1);
+    }
+    else if(A == "SCISSORS"){
+        img1.classList.add("imgChoice");
+        img1.src = "/pic/scissorsHand.png";
+        playerChoice.appendChild(img1);
+    }
+}
 
 function playGame(player, comp){
     if (player == "ROCK" && comp == "SCISSORS"){

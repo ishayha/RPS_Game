@@ -8,20 +8,38 @@
     <title>Rock-Paper-Scissors Game</title>
 </head>
 <body>
-    <h1>Rock-Paper-Scissors Game</h1>
-    <div id="playerChoice"></div>
-    <div id="compChoice"></div>
+    <h1>ROCK PAPER SCISSORS GAME</h1>
+    
     <div id="scoreBoard">
-        <div id="playerScore">0</div>
-        <div id="compScore">0</div>
+        <div id="playerText">YOU</div>
+        <div id="playerScore" class="score">0</div>
+        <div class="score">-</div>
+        <div id="compScore" class="score">0</div>
+        <div id="compText">COM</div>
     </div>
+
+    <div id="Stats">
+        <div id="playerChoice">
+    
+        </div>
+        <div id="compChoice">
+            
+        </div>
+    </div>
+
     <div id="winStatus"></div>
+
     <div class="Choices">
-        <Button class="choicesBtn" id="Rock" >Rock</Button>
-        <Button class="choicesBtn" id="Paper">Paper</Button>
-        <Button class="choicesBtn" id="Scissors">Scissors</Button>
+        <Button class="choicesBtn" id="Rock">
+            <img class="imgBtn" id="rHand" src="/pic/rockHand.png">
+        </Button>
+        <Button class="choicesBtn" id="Paper">
+            <img class="imgBtn" id="pHand" src="/pic/paperHand.png">
+        </Button>
+        <Button class="choicesBtn" id="Scissors">
+            <img class="imgBtn" id="sHand" src="/pic/scissorsHand.png">
+        </Button>
     </div>
- 
     
     
     <script src="Script.js"></script>
